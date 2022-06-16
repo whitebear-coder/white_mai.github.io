@@ -1,0 +1,82 @@
+<hr>
+<p>title: 树 初定义树 bfs和dfs<br>tags: 算法<br>cover: /img/leetcode.png</p>
+<h2 id="abbrlink-14634"><a href="#abbrlink-14634" class="headerlink" title="abbrlink: 14634"></a>abbrlink: 14634</h2><pre><code class="lang-C++">#include&lt;iostream&gt;
+#include&lt;stack&gt;
+#include&lt;queue&gt;
+#include&lt;malloc.h&gt;
+#include&lt;stdlib.h&gt;
+using namespace std;
+
+struct TreeNode{
+    char data;
+    TreeNode *left;
+    TreeNode *right;
+}; 
+
+int index = 0;
+
+TreeNode* treeNodeConstruct(TreeNode* node, char data[]){
+    char e = data[index++];
+
+    if(e == &#39;#&#39;) return nullptr;
+    //cout&lt;&lt;e;
+    node = (TreeNode*)malloc(sizeof(TreeNode));
+    node-&gt;data = e;
+    node-&gt;left = treeNodeConstruct(node-&gt;left, data);
+    node-&gt;right = treeNodeConstruct(node-&gt;right, data);
+    cout&lt;&lt;node-&gt;data&lt;&lt;&quot; &quot;; 
+    return node;
+
+}
+
+//深度优先遍历先序遍历 
+void dfs(TreeNode* root){
+    //cout&lt;&lt;root-&gt;data&lt;&lt;&quot; &quot;;
+    stack&lt;TreeNode*&gt; stk;
+    stk.push(root);
+
+    TreeNode* node; 
+    while(!stk.empty()){
+        node = stk.top();
+        cout&lt;&lt;node-&gt;data&lt;&lt;&quot; &quot;;
+        stk.pop();
+        if(node-&gt;right){
+            stk.push(node-&gt;right);
+        }
+        if(node-&gt;left){
+            stk.push(node-&gt;left);
+        }
+
+    }
+
+
+} 
+
+void bfs(TreeNode *root){
+    queue&lt;TreeNode*&gt; nodeQueue;  //使用C++的STL标准模板库
+    nodeQueue.push(root);
+    TreeNode *node;
+    while(!nodeQueue.empty()){
+        node = nodeQueue.front();
+        nodeQueue.pop();
+        cout&lt;&lt;node-&gt;data;//遍历根结点
+        if(node-&gt;left){
+            nodeQueue.push(node-&gt;left);  //先将左子树入队
+        }
+        if(node-&gt;right){
+            nodeQueue.push(node-&gt;right);  //再将右子树入队
+        }
+    }
+}
+int main() {
+    //上图所示的二叉树先序遍历序列,其中用&#39;#&#39;表示结点无左子树或无右子树
+    char data[15] = {&#39;A&#39;, &#39;B&#39;, &#39;D&#39;, &#39;#&#39;, &#39;#&#39;, &#39;E&#39;, &#39;#&#39;, &#39;#&#39;, &#39;C&#39;, &#39;F&#39;,&#39;#&#39;, &#39;#&#39;, &#39;G&#39;, &#39;#&#39;, &#39;#&#39;};
+    TreeNode* root, *ans;
+    ans = treeNodeConstruct(root, data);
+    printf(&quot;深度优先遍历二叉树结果: &quot;);
+    dfs(ans);
+    printf(&quot;\n\n广度优先遍历二叉树结果: &quot;);
+    bfs(ans);
+    return 0;
+}
+</code></pre>
