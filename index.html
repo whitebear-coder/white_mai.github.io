@@ -48,7 +48,7 @@
   isHome: true,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2022-07-24 20:03:20'
+  postUpdate: '2022-07-26 21:32:08'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -137,7 +137,48 @@
       }
     }
     detectApple()
-    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/white_bear.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小麦同学的浪漫册</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">小麦同学的浪漫册</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/whitebear-coder/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lin_zexu@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/post/33519.html" title="计算机视觉面试相关"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉面试相关"></a></div><div class="recent-post-info"><a class="article-title" href="/post/33519.html" title="计算机视觉面试相关">计算机视觉面试相关</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-21T09:53:37.749Z" title="发表于 2022-07-21 17:53:37">2022-07-21</time></span></div><div class="content">计算机视觉面试高频考点卷积神经网络基础知识
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/white_bear.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小麦同学的浪漫册</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">小麦同学的浪漫册</h1><div id="site-subtitle"><span id="subtitle"></span></div><div id="site_social_icons"><a class="social-icon" href="https://github.com/whitebear-coder/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lin_zexu@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/post/43813.html" title="散列表、二叉搜索树、红黑树"><img class="post_bg" src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="散列表、二叉搜索树、红黑树"></a></div><div class="recent-post-info"><a class="article-title" href="/post/43813.html" title="散列表、二叉搜索树、红黑树">散列表、二叉搜索树、红黑树</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-25T11:58:43.743Z" title="发表于 2022-07-25 19:58:43">2022-07-25</time></span></div><div class="content">散列表(Hash Map)
+直接寻址表 缺点:会浪费绝大部分空间
+散列表：将直接寻址得到的槽位置进行映射，映射的函数叫散列函数
+存在一个问题 : 两个关键字可能映射到同一个槽中，我们称这种情况叫做 冲突
+解决方法一 ：链接法:  数组＋链表 的形式
+解决方法二 :  开放寻址法
+开放寻址法中，所有的元素都存放在散列表里，每个表项或包含动态集合的一个元素或者NIL。当查找某个元素时，要系统的检查所有表项，直到找到所有的元素或者最终查明元素不在表中。
+为了使用开放寻址法插入一个元素，需要连续的检查散列表，直到找到一个空槽来放置待插入的关键字为止，检查的顺序不一定是顺序序列，而是依赖于待插入的关键字
+开放寻址法的思想 ：插入一个关键字k， 如果k被占用，则往后一个位置插入，直到没有空间，__与链接法相比，不需要指针，所以可以将指针所占用的空间存放更多的槽。
+开放寻址法的缺点 : 在于该方法的删除操作，如果删除了某个关键字后，无法检索到以后的关键字了，如果用一个特定的值代替，查找时间就不依赖于转载因子了
+三种技术用来探查序列：
+线性探查
+二次探查
+双重散列
+
+
+
+
+散列函数的构造 ：1. 除法 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/43814.html" title="散列表、二叉搜索树、红黑树"><img class="post_bg" src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="散列表、二叉搜索树、红黑树"></a></div><div class="recent-post-info"><a class="article-title" href="/post/43814.html" title="散列表、二叉搜索树、红黑树">散列表、二叉搜索树、红黑树</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-25T02:15:52.691Z" title="发表于 2022-07-25 10:15:52">2022-07-25</time></span></div><div class="content">散列表(Hash Map)
+直接寻址表 缺点:会浪费绝大部分空间
+散列表：将直接寻址得到的槽位置进行映射，映射的函数叫散列函数
+存在一个问题 : 两个关键字可能映射到同一个槽中，我们称这种情况叫做 冲突
+解决方法一 ：链接法:  数组＋链表 的形式
+解决方法二 :  开放寻址法
+开放寻址法中，所有的元素都存放在散列表里，每个表项或包含动态集合的一个元素或者NIL。当查找某个元素时，要系统的检查所有表项，直到找到所有的元素或者最终查明元素不在表中。
+为了使用开放寻址法插入一个元素，需要连续的检查散列表，直到找到一个空槽来放置待插入的关键字为止，检查的顺序不一定是顺序序列，而是依赖于待插入的关键字
+开放寻址法的思想 ：插入一个关键字k， 如果k被占用，则往后一个位置插入，直到没有空间，__与链接法相比，不需要指针，所以可以将指针所占用的空间存放更多的槽。
+开放寻址法的缺点 : 在于该方法的删除操作，如果删除了某个关键字后，无法检索到以后的关键字了，如果用一个特定的值代替，查找时间就不依赖于转载因子了
+三种技术用来探查序列：
+线性探查
+二次探查
+双重散列
+
+
+
+
+散列函数的构造 ：1. 除法 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/43020.html" title="nms"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nms"></a></div><div class="recent-post-info"><a class="article-title" href="/post/43020.html" title="nms">nms</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-24T12:10:55.828Z" title="发表于 2022-07-24 20:10:55">2022-07-24</time></span></div><div class="content">代码流程
+首先根据已知的xmin, xmax, ymin,ymax矩阵和置信度，还有阈值thresh确定置信度最大的坐标
+
+123456789101112131415#假如给定例子dets = np.array([                [204, 102, 358, 250, 0.5],                [257, 118, 380, 250, 0.7],                [280, 135, 400, 250, 0.6],                [255, 118, 360, 235, 0.7]])thresh = 0.7x1 = dets[:, 0] #xminy1 = dets[:, 1] #yminx2 = dets[:, 2] #xmaxy2 = dets[:, 3] #ymaxscores = dets[:, 4] #confidencearea = (x2-x1+1) * (y2-y1+1)order = scores.argsort[::-1] # 置信度index从大到小排序
+
+求交叉区域，交叉区域的面积比小于某个阈值，保 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/33519.html" title="计算机视觉面试相关"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉面试相关"></a></div><div class="recent-post-info"><a class="article-title" href="/post/33519.html" title="计算机视觉面试相关">计算机视觉面试相关</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-21T09:53:37.749Z" title="发表于 2022-07-21 17:53:37">2022-07-21</time></span></div><div class="content">计算机视觉面试高频考点卷积神经网络基础知识
 卷积运算， 计算卷积参数量， 1 * 1卷积核 作用
 感受野：卷积神经网络每一层输出的特征图上的像素点在输入图片上映射区域的大小.通俗的解释：特征图上的一个点对应输入图像上的区域
 反卷积
@@ -150,7 +191,7 @@
 经典卷积神经网络(AlexNet, Inception, VGG, ResNet)
 Inception v1 将1  1， 3  3， 5  5的conv和3  3 pooling堆叠一起，一方面增加了网络的width, 另一方面增加了网络对尺度的适应性，增加了网络的宽度，增加了网络对尺度的适应性，不同支路的感受野是不同的，所以有多尺度的信息在里面。
 
-Inception v2 加入了BN层，减少了Internal Covariate Shift, 使每一层输出都规范化到一个N(0, 1)的高斯， 用两个3  3conv 替代了inception模 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/36887.html" title="激活函数 梯度"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="激活函数 梯度"></a></div><div class="recent-post-info"><a class="article-title" href="/post/36887.html" title="激活函数 梯度">激活函数 梯度</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-19T10:58:56.605Z" title="发表于 2022-07-19 18:58:56">2022-07-19</time></span></div><div class="content">激活函数
+Inception v2 加入了BN层，减少了Internal Covariate Shift, 使每一层输出都规范化到一个N(0, 1)的高斯， 用两个3  3conv 替代了inception模 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/36887.html" title="激活函数 梯度"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="激活函数 梯度"></a></div><div class="recent-post-info"><a class="article-title" href="/post/36887.html" title="激活函数 梯度">激活函数 梯度</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-19T10:58:56.605Z" title="发表于 2022-07-19 18:58:56">2022-07-19</time></span></div><div class="content">激活函数
 sigmoid函数
 
 优点: 1.输出在(0, 1)之间，输出范围有限，优化稳定，可以用作输出层
@@ -178,12 +219,12 @@ LeakyRelu函数(实践中没有Relu效果好)
 
 优点：1.解决Relu神经元的死亡问题，在负区域具有小的正斜率，即使对于负输入值，也可以进     
 ​              行反向传播
- ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/43020.html" title="nms"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nms"></a></div><div class="recent-post-info"><a class="article-title" href="/post/43020.html" title="nms">nms</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-08T12:28:00.619Z" title="发表于 2022-07-08 20:28:00">2022-07-08</time></span></div><div class="content">代码流程
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/43020.html" title="nms"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nms"></a></div><div class="recent-post-info"><a class="article-title" href="/post/43020.html" title="nms">nms</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-08T12:28:00.619Z" title="发表于 2022-07-08 20:28:00">2022-07-08</time></span></div><div class="content">代码流程
 首先根据已知的xmin, xmax, ymin,ymax矩阵和置信度，还有阈值thresh确定置信度最大的坐标
 
 123456789101112131415#假如给定例子dets = np.array([                [204, 102, 358, 250, 0.5],                [257, 118, 380, 250, 0.7],                [280, 135, 400, 250, 0.6],                [255, 118, 360, 235, 0.7]])thresh = 0.7x1 = dets[:, 0] #xminy1 = dets[:, 1] #yminx2 = dets[:, 2] #xmaxy2 = dets[:, 3] #ymaxscores = dets[:, 4] #confidencearea = (x2-x1+1) * (y2-y1+1)order = scores.argsort[::-1] # 置信度index从大到小排序
 
-求交叉区域，交叉区域的面积比小于某个阈值，保 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/9768.html" title="算法实习岗面经2"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经2"></a></div><div class="recent-post-info"><a class="article-title" href="/post/9768.html" title="算法实习岗面经2">算法实习岗面经2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-04T07:38:50.605Z" title="发表于 2022-07-04 15:38:50">2022-07-04</time></span></div><div class="content">面经4-海康威视机器学习算法岗实习一面
+求交叉区域，交叉区域的面积比小于某个阈值，保 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/9768.html" title="算法实习岗面经2"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经2"></a></div><div class="recent-post-info"><a class="article-title" href="/post/9768.html" title="算法实习岗面经2">算法实习岗面经2</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-04T07:38:50.605Z" title="发表于 2022-07-04 15:38:50">2022-07-04</time></span></div><div class="content">面经4-海康威视机器学习算法岗实习一面
 对卷积的理解，卷积的特点
 参数量计算，计算量计算，卷积的过程，特征提取功能
 
@@ -208,7 +249,7 @@ LSTM: 文本分类、情感分析、文本生成和命名实体识别, cv和语�
 GAN：数据生成(图像生成，图像数据增强，图像)、替换判别器为一个分类器，做多分类任务，生 成器仍然做生成任务，辅助分类器训练。图像风格迁移，图像降噪修复，图像超分辨率 GAN和强化学习
 不仅在生成领域，GAN在分类领域也占有一席之地，简单来说，就是替换判别器为一个分     类器，做多分类任务，而生成器仍然做生成任务，辅助分类器训练。
 
-Un ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/10088.html" title="算法实习岗面经1"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经1"></a></div><div class="recent-post-info"><a class="article-title" href="/post/10088.html" title="算法实习岗面经1">算法实习岗面经1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-03T08:05:55.689Z" title="发表于 2022-07-03 16:05:55">2022-07-03</time></span></div><div class="content">面经1-阿里算法岗实习一面
+Un ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/10088.html" title="算法实习岗面经1"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经1"></a></div><div class="recent-post-info"><a class="article-title" href="/post/10088.html" title="算法实习岗面经1">算法实习岗面经1</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-03T08:05:55.689Z" title="发表于 2022-07-03 16:05:55">2022-07-03</time></span></div><div class="content">面经1-阿里算法岗实习一面
 项目
 
 题目 100G 文件 出现频率最高的100个词
@@ -244,10 +285,10 @@ hash_map实现
 三面
 性格，经历，爱好，成就感的事，遗憾的事，家在哪，独生子女吗，家在哪？
 
-面经2-蚂蚁金服 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/60109.html" title="279 完全平方数"><img class="post_bg" src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="279 完全平方数"></a></div><div class="recent-post-info"><a class="article-title" href="/post/60109.html" title="279 完全平方数">279 完全平方数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-01T02:52:30.491Z" title="发表于 2022-07-01 10:52:30">2022-07-01</time></span></div><div class="content">题目描述给你一个整数 n ，返回 和为 n 的完全平方数的最少数量 。
+面经2-蚂蚁金服 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/60109.html" title="279 完全平方数"><img class="post_bg" src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="279 完全平方数"></a></div><div class="recent-post-info"><a class="article-title" href="/post/60109.html" title="279 完全平方数">279 完全平方数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-07-01T02:52:30.491Z" title="发表于 2022-07-01 10:52:30">2022-07-01</time></span></div><div class="content">题目描述给你一个整数 n ，返回 和为 n 的完全平方数的最少数量 。
 完全平方数 是一个整数，其值等于另一个整数的平方；换句话说，其值等于一个整数自乘的积。例如，1、4、9 和 16 都是完全平方数，而 3 和 11 不是。
 代码示例123输入：n = 12输出：3 解释：12 = 4 + 4 + 4
-代码12345678910111213141516class Solution &#123;public:    int numSquares(int n) &#123;        vector&lt;int&gt; f(n+1);        for(int i=1;i&lt;=n;i++)&#123;            int minn = INT_MAX;            for(int j = 1; j * j&lt;=i;j++)&#123;                minn = min(minn, f[i - j*j]);            &#125;            f[i] = minn + 1;        &#125;       ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/7017.html" title="高数线代概率论大纲"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高数线代概率论大纲"></a></div><div class="recent-post-info"><a class="article-title" href="/post/7017.html" title="高数线代概率论大纲">高数线代概率论大纲</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-29T13:43:51.569Z" title="发表于 2022-06-29 21:43:51">2022-06-29</time></span></div><div class="content">高数
+代码12345678910111213141516class Solution &#123;public:    int numSquares(int n) &#123;        vector&lt;int&gt; f(n+1);        for(int i=1;i&lt;=n;i++)&#123;            int minn = INT_MAX;            for(int j = 1; j * j&lt;=i;j++)&#123;                minn = min(minn, f[i - j*j]);            &#125;            f[i] = minn + 1;        &#125;       ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/7017.html" title="高数线代概率论大纲"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="高数线代概率论大纲"></a></div><div class="recent-post-info"><a class="article-title" href="/post/7017.html" title="高数线代概率论大纲">高数线代概率论大纲</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-29T13:43:51.569Z" title="发表于 2022-06-29 21:43:51">2022-06-29</time></span></div><div class="content">高数
 极限和导数
 
 微分中值定理
@@ -352,83 +393,7 @@ hash_map实现
 
 
 
-多维随机 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/16012.html" title="机器学习 模式识别基础知识"><img class="post_bg" src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="机器学习 模式识别基础知识"></a></div><div class="recent-post-info"><a class="article-title" href="/post/16012.html" title="机器学习 模式识别基础知识">机器学习 模式识别基础知识</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-29T12:37:26.537Z" title="发表于 2022-06-29 20:37:26">2022-06-29</time></span></div><div class="content">机器学习
-过拟合和欠拟合
-
-偏差和方差
-
-模型 - 感知机
-
-模型 - 线性模型 梯度下降解和闭式解
-
-模型 - logistic回归
-
-模型 - 线性判别分析(LDA)
-类内散度矩阵和类间散度矩阵 类间/类内(不同类内相加) 最大
-
-正负样本类别不均衡问题
-
-对训练集历得反类样例进行欠采样
-对训练集里的正类样例进行过采样
-阈值移动
-
-
-模型 - 决策树
-
-信息增益 西瓜书P75页
-
-
-模型 - 神经网络
-
-逆传播算法
-避免过拟合和欠拟合
-
-
-模型支持向量机(SVM)
-
-间隔和支持向量
-间隔：两个异类支持向量到超平面的距离
-支持向量：距离超平面最近的几个训练样本点使等号成立
-
-核函数的作用
-训练样本线性不可分，将原始空间映射成更高维的特征空间，使得样本在这个特征空间内线性可分
-
-常见的核函数：线性核，多项式核，高斯核，拉普拉斯核，sigmoid函数核
-
-
-软间隔的作用：允许某些样本不满足：引入松弛变量
-
-
-
-贝叶斯分类器
-
-最大似然估计
-贝叶斯估计
-
-
-集成学习
-
-boosting从初始训练集训练出一个基学习器，再根据基学习器的表现对训练样本分布进行调整，使得先前基学习器做错的样本再后 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/post/4347.html" title="组合总和"><img class="post_bg" src="/img/leetcode.png#" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="组合总和"></a></div><div class="recent-post-info"><a class="article-title" href="/post/4347.html" title="组合总和">组合总和</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-21T07:57:53.884Z" title="发表于 2022-06-21 15:57:53">2022-06-21</time></span></div><div class="content">题目简述 _这个题困扰了我两天，看了答案也刚刚看懂，据说还是 腾讯面试 的一道题，还是认真练习反思这道题叭!_
-leetcode 39 难度中等（我觉得难度是困难）
-给你一个 无重复元素 的整数数组 candidates 和一个目标整数 target ，找出 candidates 中可以使数字和为目标数 target 的 所有 不同组合 ，并以列表形式返回。你可以按 任意顺序 返回这些组合。
-candidates 中的 同一个 数字可以 无限制重复被选取 。如果至少一个数字的被选数量不同，则两种组合是不同的。 
-对于给定的输入，保证和为 target 的不同组合数少于 150 个。
-12345678910输入：candidates = [2,3,6,7], target = 7输出：[[2,2,3],[7]]解释：2 和 3 可以形成一组候选，2 + 2 + 3 = 7 。注意 2 可以使用多次。7 也是一个候选， 7 = 7 。仅有这两种组合。来源：力扣（LeetCode）链接：https://leetcode.cn/problems/combination-sum著作权归领扣网络所 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/post/41604.html" title="stl库"><img class="post_bg" src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="stl库"></a></div><div class="recent-post-info"><a class="article-title" href="/post/41604.html" title="stl库">stl库</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2022-06-16T09:39:01.404Z" title="发表于 2022-06-16 17:39:01">2022-06-16</time></span></div><div class="content">## stl库STL,学名Standard Template Library，一般我们称他为标准模板库，是一系列软件的统称。
-从根本上说，STL是一些“容器”的集合，这些“容器”有list,vector,set,map一大堆，STL也是算
-法和其他一些组件的集合。比如说中sort函数、中string类都是stl库
-
-sort函数
-
-sort进阶用法
-1234567bool cmp(int x,int y)&#123;	if(x&gt;y)return true;//降序	return false;&#125;sort(a, a+7, cmp); //降序
-
-sort对于结构体排序
-
-map&lt;类型，类型&gt; m
-123//初始化map&lt;string, string&gt; map;map[&quot;张三&quot;] = &quot;长得高&quot;
-
-stack
-1234567891011121314#include&lt;stack&gt;//初始化stackstack&lt;int&gt; stk;//判断是否为空stk.empty();//栈顶增加元素stk. ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/white_bear.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小麦同学</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whitebear-coder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whitebear-coder/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lin_zexu@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自由且浪漫！ QQ：1664289871 WeChat：E18804142577</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/33519.html" title="计算机视觉面试相关"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉面试相关"/></a><div class="content"><a class="title" href="/post/33519.html" title="计算机视觉面试相关">计算机视觉面试相关</a><time datetime="2022-07-21T09:53:37.749Z" title="发表于 2022-07-21 17:53:37">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/36887.html" title="激活函数 梯度"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="激活函数 梯度"/></a><div class="content"><a class="title" href="/post/36887.html" title="激活函数 梯度">激活函数 梯度</a><time datetime="2022-07-19T10:58:56.605Z" title="发表于 2022-07-19 18:58:56">2022-07-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/43020.html" title="nms"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nms"/></a><div class="content"><a class="title" href="/post/43020.html" title="nms">nms</a><time datetime="2022-07-08T12:28:00.619Z" title="发表于 2022-07-08 20:28:00">2022-07-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/9768.html" title="算法实习岗面经2"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经2"/></a><div class="content"><a class="title" href="/post/9768.html" title="算法实习岗面经2">算法实习岗面经2</a><time datetime="2022-07-04T07:38:50.605Z" title="发表于 2022-07-04 15:38:50">2022-07-04</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/10088.html" title="算法实习岗面经1"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经1"/></a><div class="content"><a class="title" href="/post/10088.html" title="算法实习岗面经1">算法实习岗面经1</a><time datetime="2022-07-03T08:05:55.689Z" title="发表于 2022-07-03 16:05:55">2022-07-03</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/base/" style="font-size: 1.1em; color: #999">base</a> <a href="/tags/base-DL/" style="font-size: 1.3em; color: #99a1ac">base DL</a> <a href="/tags/%E5%A4%8F%E4%BB%A4%E8%90%A5/" style="font-size: 1.1em; color: #999">夏令营</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 1.3em; color: #99a1ac">实习</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 1.3em; color: #99a1ac">目标检测</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">6</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-07-24T12:03:20.720Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小麦同学</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"><script>function subtitleType () {
+多维随机 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="page-number" href="/page/3/#content-inner">3</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/white_bear.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小麦同学</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">28</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whitebear-coder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whitebear-coder/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lin_zexu@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自由且浪漫！ QQ：1664289871 WeChat：E18804142577</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/43813.html" title="散列表、二叉搜索树、红黑树"><img src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="散列表、二叉搜索树、红黑树"/></a><div class="content"><a class="title" href="/post/43813.html" title="散列表、二叉搜索树、红黑树">散列表、二叉搜索树、红黑树</a><time datetime="2022-07-25T11:58:43.743Z" title="发表于 2022-07-25 19:58:43">2022-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/43814.html" title="散列表、二叉搜索树、红黑树"><img src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="散列表、二叉搜索树、红黑树"/></a><div class="content"><a class="title" href="/post/43814.html" title="散列表、二叉搜索树、红黑树">散列表、二叉搜索树、红黑树</a><time datetime="2022-07-25T02:15:52.691Z" title="发表于 2022-07-25 10:15:52">2022-07-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/43020.html" title="nms"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="nms"/></a><div class="content"><a class="title" href="/post/43020.html" title="nms">nms</a><time datetime="2022-07-24T12:10:55.828Z" title="发表于 2022-07-24 20:10:55">2022-07-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/33519.html" title="计算机视觉面试相关"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="计算机视觉面试相关"/></a><div class="content"><a class="title" href="/post/33519.html" title="计算机视觉面试相关">计算机视觉面试相关</a><time datetime="2022-07-21T09:53:37.749Z" title="发表于 2022-07-21 17:53:37">2022-07-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/36887.html" title="激活函数 梯度"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="激活函数 梯度"/></a><div class="content"><a class="title" href="/post/36887.html" title="激活函数 梯度">激活函数 梯度</a><time datetime="2022-07-19T10:58:56.605Z" title="发表于 2022-07-19 18:58:56">2022-07-19</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>标签</span></div><div class="card-tag-cloud"><a href="/tags/base/" style="font-size: 1.1em; color: #999">base</a> <a href="/tags/base-DL/" style="font-size: 1.37em; color: #99a4b2">base DL</a> <a href="/tags/%E5%A4%8F%E4%BB%A4%E8%90%A5/" style="font-size: 1.1em; color: #999">夏令营</a> <a href="/tags/%E5%AE%9E%E4%B9%A0/" style="font-size: 1.23em; color: #999ea6">实习</a> <a href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/" style="font-size: 1.23em; color: #999ea6">目标检测</a> <a href="/tags/%E7%AE%97%E6%B3%95/" style="font-size: 1.5em; color: #99a9bf">算法</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>归档</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">七月 2022</span><span class="card-archive-list-count">9</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">六月 2022</span><span class="card-archive-list-count">13</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">五月 2022</span><span class="card-archive-list-count">6</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站资讯</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">28</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">本站总访问量 :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-07-26T13:32:08.213Z"></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小麦同学</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"><script>function subtitleType () {
   if (true) { 
     window.typed = new Typed("#subtitle", {
       strings: ["世事如书。"],
