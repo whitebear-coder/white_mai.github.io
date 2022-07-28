@@ -1,0 +1,43 @@
+<hr>
+<p>title: R-CNN<br>tags: 目标检测</p>
+<h2 id="abbrlink-57588"><a href="#abbrlink-57588" class="headerlink" title="abbrlink: 57588"></a>abbrlink: 57588</h2><h1 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h1><p><strong>RCNN主要分为四个步骤</strong> :</p>
+<ul>
+<li><strong>候选区域生成</strong> : 一张图片生成 1K-2K个候选区域（采用Selective Search方法) 。</li>
+<li><strong>特征提取</strong> : 对于每个候选区域，使用深度卷积神经网络提取特征(CNN)。</li>
+<li><strong>类别判断</strong> : 特征送入每一类的SVM分类器，判断是否属于该类。</li>
+<li><strong>位置精修</strong> : 使用回归器精细修正候选框位置。(<strong>我们训练了一个线性回归模型，为每个辨识到的物体生成更精确的边界框</strong>)</li>
+</ul>
+<h2 id="Selective-Search"><a href="#Selective-Search" class="headerlink" title="Selective Search"></a>Selective Search</h2><ul>
+<li>步骤：<ul>
+<li>使用一种过分割手段，将图像分割成小区域(1k - 2k个)。</li>
+<li>查看现有小区域，按照合并规则最高的相邻两个区域，重复直到整张图片合并成一个区域位置。<ul>
+<li>合并规则如下：<ul>
+<li>颜色（颜色直方图）相近的</li>
+<li>纹理（梯度直方图）相近的</li>
+<li>合并后总面积小的：保证合并操作的尺度较为均匀，避免一个大区域陆续吃掉其他小区域</li>
+<li>合并后。总面积在BBOX中所占比例大的，保证合并后形状规则。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>输出所有曾经存在过的区域，所谓候选区域。</li>
+</ul>
+</li>
+</ul>
+<h2 id="R-CNN存在的问题"><a href="#R-CNN存在的问题" class="headerlink" title="R-CNN存在的问题"></a>R-CNN存在的问题</h2><ul>
+<li>训练一个RCNN模型非常昂贵，并且步骤较多：<ul>
+<li>根据选择性搜索，我们要对每张图片提取2000个单独区域</li>
+<li>用RCNN进行目标检测的模型较多(CNN, SVM, 调整边界框的回归模型)</li>
+</ul>
+</li>
+<li>主要是这些过程合并在一起，会让RCNN的<strong>速度变慢</strong>。</li>
+</ul>
+<h1 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h1><h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤</strong>：</h2><ul>
+<li>输入图片，输入到卷积网络中，生成感兴趣区域。</li>
+<li>使用RoI池化层对这些区域重新调整，将其输入到完全连接网络中。<ul>
+<li>在区域上应用RoI池化层，保证每个区域的尺寸相同</li>
+</ul>
+</li>
+<li>在网络顶层使用softmax层输出类别，同样使用一个线性回归层，输出相对应的边界框。</li>
+</ul>
+<h2 id="Fast-RCNN的问题："><a href="#Fast-RCNN的问题：" class="headerlink" title="Fast RCNN的问题："></a>Fast RCNN的问题：</h2><p>Fast R-CNN也有某些局限性，它同样用的是选择性搜索作为感兴趣区域的，这一过程通常较慢， 速度仍然不够理想。</p>

@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>R-CNN | 小麦同学的浪漫册</title><meta name="keywords" content="目标检测"><meta name="author" content="小麦同学"><meta name="copyright" content="小麦同学"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="R-CNNRCNN主要分为四个步骤 :  候选区域生成 : 一张图片生成 1K-2K个候选区域（采用Selective Search方法) 。 特征提取 : 对于每个候选区域，使用深度卷积神经网络提取特征(CNN)。 类别判断 : 特征送入每一类的SVM分类器，判断是否属于该类。 位置精修 : 使用回归器精细修正候选框位置。(我们训练了一个线性回归模型，为每个辨识到的物体生成更精确的边界框)  S">
+<meta property="og:type" content="article">
+<meta property="og:title" content="R-CNN">
+<meta property="og:url" content="http://example.com/post/57588.html">
+<meta property="og:site_name" content="小麦同学的浪漫册">
+<meta property="og:description" content="R-CNNRCNN主要分为四个步骤 :  候选区域生成 : 一张图片生成 1K-2K个候选区域（采用Selective Search方法) 。 特征提取 : 对于每个候选区域，使用深度卷积神经网络提取特征(CNN)。 类别判断 : 特征送入每一类的SVM分类器，判断是否属于该类。 位置精修 : 使用回归器精细修正候选框位置。(我们训练了一个线性回归模型，为每个辨识到的物体生成更精确的边界框)  S">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/top_img.png">
+<meta property="article:published_time" content="2022-07-28T06:31:34.845Z">
+<meta property="article:modified_time" content="2022-07-28T07:17:01.836Z">
+<meta property="article:author" content="小麦同学">
+<meta property="article:tag" content="目标检测">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/top_img.png"><link rel="shortcut icon" href="/img/favicon.svg"><link rel="canonical" href="http://example.com/post/57588"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'R-CNN',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-07-28 15:17:01'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/img/white_bear.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><hr/></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/top_img.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">小麦同学的浪漫册</a></span><div id="menus"><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">R-CNN</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-07-28T06:31:34.845Z" title="发表于 2022-07-28 14:31:34">2022-07-28</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-07-28T07:17:01.836Z" title="更新于 2022-07-28 15:17:01">2022-07-28</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="R-CNN"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="R-CNN"><a href="#R-CNN" class="headerlink" title="R-CNN"></a>R-CNN</h1><p><strong>RCNN主要分为四个步骤</strong> :</p>
+<ul>
+<li><strong>候选区域生成</strong> : 一张图片生成 1K-2K个候选区域（采用Selective Search方法) 。</li>
+<li><strong>特征提取</strong> : 对于每个候选区域，使用深度卷积神经网络提取特征(CNN)。</li>
+<li><strong>类别判断</strong> : 特征送入每一类的SVM分类器，判断是否属于该类。</li>
+<li><strong>位置精修</strong> : 使用回归器精细修正候选框位置。(<strong>我们训练了一个线性回归模型，为每个辨识到的物体生成更精确的边界框</strong>)</li>
+</ul>
+<h2 id="Selective-Search"><a href="#Selective-Search" class="headerlink" title="Selective Search"></a>Selective Search</h2><ul>
+<li>步骤：<ul>
+<li>使用一种过分割手段，将图像分割成小区域(1k - 2k个)。</li>
+<li>查看现有小区域，按照合并规则最高的相邻两个区域，重复直到整张图片合并成一个区域位置。<ul>
+<li>合并规则如下：<ul>
+<li>颜色（颜色直方图）相近的</li>
+<li>纹理（梯度直方图）相近的</li>
+<li>合并后总面积小的：保证合并操作的尺度较为均匀，避免一个大区域陆续吃掉其他小区域</li>
+<li>合并后。总面积在BBOX中所占比例大的，保证合并后形状规则。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>输出所有曾经存在过的区域，所谓候选区域。</li>
+</ul>
+</li>
+</ul>
+<h2 id="R-CNN存在的问题"><a href="#R-CNN存在的问题" class="headerlink" title="R-CNN存在的问题"></a>R-CNN存在的问题</h2><ul>
+<li>训练一个RCNN模型非常昂贵，并且步骤较多：<ul>
+<li>根据选择性搜索，我们要对每张图片提取2000个单独区域</li>
+<li>用RCNN进行目标检测的模型较多(CNN, SVM, 调整边界框的回归模型)</li>
+</ul>
+</li>
+<li>主要是这些过程合并在一起，会让RCNN的<strong>速度变慢</strong>。</li>
+</ul>
+<h1 id="Fast-R-CNN"><a href="#Fast-R-CNN" class="headerlink" title="Fast R-CNN"></a>Fast R-CNN</h1><h2 id="步骤："><a href="#步骤：" class="headerlink" title="步骤："></a><strong>步骤</strong>：</h2><ul>
+<li>输入图片，输入到卷积网络中，生成感兴趣区域。</li>
+<li>使用RoI池化层对这些区域重新调整，将其输入到完全连接网络中。<ul>
+<li>在区域上应用RoI池化层，保证每个区域的尺寸相同</li>
+</ul>
+</li>
+<li>在网络顶层使用softmax层输出类别，同样使用一个线性回归层，输出相对应的边界框。</li>
+</ul>
+<h2 id="Fast-RCNN的问题："><a href="#Fast-RCNN的问题：" class="headerlink" title="Fast RCNN的问题："></a>Fast RCNN的问题：</h2><p>Fast R-CNN也有某些局限性，它同样用的是选择性搜索作为感兴趣区域的，这一过程通常较慢， 速度仍然不够理想。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">小麦同学</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/post/57588.html">http://example.com/post/57588.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">小麦同学的浪漫册</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B/">目标检测</a></div><div class="post_share"><div class="social-share" data-image="/img/top_img.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/post/59113.html"><img class="next-cover" src="/img/cv.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">算法实习岗面经3</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/post/58181.html" title="R-CNN系列"><img class="cover" src="/img/Faster-RCNN.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-29</div><div class="title">R-CNN系列</div></div></a></div><div><a href="/post/18112.html" title="再谈transformer"><img class="cover" src="/img/cv.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-30</div><div class="title">再谈transformer</div></div></a></div><div><a href="/post/17268.html" title="DERT - object detection based on transformer"><img class="cover" src="/img/cv.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-30</div><div class="title">DERT - object detection based on transformer</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/img/white_bear.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">小麦同学</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">31</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">6</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/whitebear-coder"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/whitebear-coder/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="/lin_zexu@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">自由且浪漫！ QQ：1664289871 WeChat：E18804142577</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#R-CNN"><span class="toc-number">1.</span> <span class="toc-text">R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Selective-Search"><span class="toc-number">1.1.</span> <span class="toc-text">Selective Search</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#R-CNN%E5%AD%98%E5%9C%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.</span> <span class="toc-text">R-CNN存在的问题</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Fast-R-CNN"><span class="toc-number">2.</span> <span class="toc-text">Fast R-CNN</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%AD%A5%E9%AA%A4%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">步骤：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Fast-RCNN%E7%9A%84%E9%97%AE%E9%A2%98%EF%BC%9A"><span class="toc-number">2.2.</span> <span class="toc-text">Fast RCNN的问题：</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/post/57588.html" title="R-CNN"><img src="/img/top_img.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="R-CNN"/></a><div class="content"><a class="title" href="/post/57588.html" title="R-CNN">R-CNN</a><time datetime="2022-07-28T06:31:34.845Z" title="发表于 2022-07-28 14:31:34">2022-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/59113.html" title="算法实习岗面经3"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经3"/></a><div class="content"><a class="title" href="/post/59113.html" title="算法实习岗面经3">算法实习岗面经3</a><time datetime="2022-07-28T03:16:29.474Z" title="发表于 2022-07-28 11:16:29">2022-07-28</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/59114.html" title="算法实习岗面经3"><img src="/img/cv.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="算法实习岗面经3"/></a><div class="content"><a class="title" href="/post/59114.html" title="算法实习岗面经3">算法实习岗面经3</a><time datetime="2022-07-27T01:49:33.472Z" title="发表于 2022-07-27 09:49:33">2022-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/61909.html" title="二叉搜索树相关题目"><img src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="二叉搜索树相关题目"/></a><div class="content"><a class="title" href="/post/61909.html" title="二叉搜索树相关题目">二叉搜索树相关题目</a><time datetime="2022-07-27T01:33:37.703Z" title="发表于 2022-07-27 09:33:37">2022-07-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/post/43813.html" title="散列表、二叉搜索树、红黑树"><img src="/img/leetcode.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="散列表、二叉搜索树、红黑树"/></a><div class="content"><a class="title" href="/post/43813.html" title="散列表、二叉搜索树、红黑树">散列表、二叉搜索树、红黑树</a><time datetime="2022-07-25T11:58:43.743Z" title="发表于 2022-07-25 19:58:43">2022-07-25</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url('/img/top_img.png')"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By 小麦同学</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
